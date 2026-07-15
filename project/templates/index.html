@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explainable User Behavior Clustering Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Explainable User Behavior Clustering Dashboard</h1>
+            <p>Upload a CSV file, run clustering, and inspect explainable insights.</p>
+        </header>
+
+        <section class="card controls">
+            <h2>Upload and Analyze</h2>
+            <input type="file" id="csvFile" accept=".csv">
+            <div class="button-row">
+                <button id="uploadBtn">Upload Data</button>
+                <button id="analyzeBtn">Run Analysis</button>
+            </div>
+            <div id="loading" class="loading hidden">Processing data, please wait...</div>
+            <div id="message" class="message"></div>
+        </section>
+
+        <section class="grid">
+            <div class="card">
+                <h3>Cluster Distribution</h3>
+                <canvas id="clusterChart"></canvas>
+            </div>
+            <div class="card">
+                <h3>Engagement vs Purchases</h3>
+                <canvas id="scatterChart"></canvas>
+            </div>
+            <div class="card">
+                <h3>SHAP Feature Importance</h3>
+                <canvas id="importanceChart"></canvas>
+            </div>
+        </section>
+
+        <section class="card">
+            <h3>Clustered Users</h3>
+            <div class="table-wrap">
+                <table id="resultsTable">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
